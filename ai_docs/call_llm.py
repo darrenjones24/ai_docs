@@ -1,4 +1,5 @@
 from google import genai
+from google.genai import types
 import os
 import logging
 import json
@@ -50,11 +51,13 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
     client = genai.Client(
         vertexai=True,
         project=os.getenv("GEMINI_PROJECT_ID", "ai-sre-dev-84b7"),
-        location=os.getenv("GEMINI_LOCATION", "us-central1")
+        location=os.getenv("GEMINI_LOCATION", "us-central1"),
+        http_options=types.HttpOptions(api_version='v1')
     )
 
     model = os.getenv("GEMINI_MODEL", "gemini-2.0-flash-exp")
-    
+    # for model in client.models.list():
+    #     print(model)
     response = client.models.generate_content(model=model, contents=[prompt])
     response_text = response.text
 
