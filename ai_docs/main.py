@@ -40,7 +40,7 @@ class AnalyzeLogicFlow(Node):
     #     pass
 
     def exec(self, text):
-        prompt = f"Analyze the following Python code and describe its main algorithm or logic flow. Focus on the sequence of operations, control structures (loops, conditionals), function calls, and data transformations. Explain the purpose of the code in terms of its logic.\n\nCode:\n```python\n{text}\n```"
+        prompt = f"Analyze the following Python code and describe its main algorithm or logic flow. Focus on the sequence of operations, control structures (loops, conditionals), function calls, and data transformations. Do not include the code in the output. Explain the purpose of the code in terms of its logic.\n\nCode:\n```python\n{text}\n```"
         # Assuming call_llm handles potential errors and returns a string
         return call_llm(prompt)
 
