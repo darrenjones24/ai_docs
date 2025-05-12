@@ -56,8 +56,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
     )
 
     model = os.getenv("GEMINI_MODEL", "gemini-2.0-flash-exp")
-    # for model in client.models.list():
-    #     print(model)
+
     response = client.models.generate_content(model=model, contents=[prompt])
     response_text = response.text
 

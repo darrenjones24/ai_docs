@@ -38,6 +38,8 @@ DEFAULT_EXCLUDE_DIRS = {
     ".git",
     ".github",
     ".terraform",
+    ".env",
+    ".venv",
     "assets",
     "build",
     "dist",
